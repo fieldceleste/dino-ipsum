@@ -5,11 +5,11 @@ import './styles.css';
 import { DinoIpsum } from './dino-ipsum.js';
 
 $(document).ready(function () {
-
-  $('#dinoGif').click(function () {       //////////// Works
-    // const dino = $('#dinoLocation').val();
+  $('#dinoGif').click(function () {   
+    let dinosaurs = $('.gif').val();
     // $('#dinoGif').val("");
-
+    // $("#dinoGif").show();
+ 
     (async () => {
       let dinoIpsum = new DinoIpsum();
       const response = await dinoIpsum.getGifDino();
@@ -20,7 +20,7 @@ $(document).ready(function () {
     function getElements(response) {
       if (response) {
         // let dino = response.gif;
-        $("#gif").html(`${response.explore.dinosaurs}`);
+        $(".gif").html(`<img src = "${dinosaurs}"`);
         console.log(".dinosaurs");
       } else {
         $(".errors").text("Does not work")
