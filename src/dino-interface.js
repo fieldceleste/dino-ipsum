@@ -1,34 +1,113 @@
-import $ from 'jquery';
+
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
+import $ from "jquery";
 import { DinoIpsum } from './dino-ipsum.js';
 
-$(document).ready(function () {
-  $('#dinoGif').click(function () {   
-    let dinosaurs = $('.gif').val();
-    // $('#dinoGif').val("");
-    // $("#dinoGif").show();
- 
-    (async () => {
-      let dinoIpsum = new DinoIpsum();
-      const response = await dinoIpsum.getGifDino();
-      
-      getElements(response);
+$(document).ready(function(){
+  
+
+   $("#button").click(function(){
+    (async() => {
+      let dinoGif = new DinoIpsum();
+      const response = await dinoGif.getQuote();
+      const gifResponse = await dinoGif.getGif();
+      console.log(gifResponse)
+      $('#showGif').html(`<img src="${gifResponse}" alt="a random dino gif">"${response[0]}"`);
     })();
-
-    function getElements(response) {
-      if (response) {
-        // let dino = response.gif;
-        $(".gif").html(`<img src = "${dinosaurs}"`);
-        console.log(".dinosaurs");
-      } else {
-        $(".errors").text("Does not work")
-      }
-    }
-
+   });
+   
+  //  let request = new XMLHttpRequest();
+   
+  //  request.open('GET', 'http://dinoipsum.herokuapp.com/api/?format=html&words=10&paragraphs=3');
+  //  request.onload = function() {
+  //    if (this.status === 200) {
+  //      document.querySelector('.container').innerHTML = this.response;
+  //     } else {
+  //       console.log('Where did all the dinosaurs go?');
+  //     }
+  //   };
+  //   request.send();
+    
   });
-});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import $ from 'jquery';
+// import 'bootstrap';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import './styles.css';
+// import { DinoIpsum } from './dino-ipsum.js';
+
+
+// $(document).ready(function () {
+//   $('#dinoGif').click(function () {   
+//     // let gif = $('.gif').val();
+//     // $('#dinoGif').val("");
+//     // $("#dinoGif").show();
+ 
+//     (async () => {
+//       let dinoGif = new DinoIpsum();
+//       const gifResponse = await dinoGif.getGifDino();
+//       console.log(gifResponse);
+//       getElements(gifResponse);
+
+//     })();
+
+//     function getElements(gifResponse) {
+//       if (gifResponse) {
+    
+//         // $('.gif').html(`${response.images.md}`);
+//         // let dino = response.gif;
+//        $(".gif").html(`<img src="${gifResponse.data.url}" alt="">`);
+//       } else {
+//         $(".errors").html("Does not work")
+//       }
+//     }
+
+//   });
+// });
 
 
 
@@ -88,38 +167,30 @@ $(document).ready(function () {
 
 
 
-     //   let request = new XMLHttpRequest();
 
-    //   request.open('GET', 'http://dinoipsum.herokuapp.com/api/?format=html&words=10&paragraphs=3');
-    //   request.onload = function() {
-    //     if (this.status === 200) {
-    //       document.querySelector('.container').innerHTML = this.response;
-    //     } else {
-    //       console.log('Where did all the dinosaurs go?');
+
+
+
+
+    // export class GetSwanson {
+    //     async getGif() {
+    //         try {
+    //           let gifResponse = await fetch (`https://api.giphy.com/v1/stickers/search?api_key=gx6y7oa8h4zLmpMCh7e3oNNNZEF9K8dR&q=dinosaurs&limit=25&offset=0&rating=G&lang=en`);
+    //           let jsonifiedResponse;
+    //           if ( gifResponse .ok &&  gifResponse .status == 200) {
+    //             jsonifiedResponse = await  gifResponse .json();
+    //             let { data } = jsonifiedResponse;
+    //             let randGif = data[Math.floor(Math.random()*29)];
+    //           console.log(jsonifiedResponse)
+    //             let { images:{ original: { url }} } = randGif;
+    //             jsonifiedResponse = url;
+    //           } else { 
+    //             jsonifiedResponse = false; 
+    //           } 
+    //           return jsonifiedResponse;
+    //         } catch (error) {
+    //           console.log("error", error);
+    //           return false; 
+    //         }
+    //       }
     //     }
-    //     };
-    // request.send();
-    // });
-
-
-
-
-
-
-
-  // var xhr = $.get("http://api.giphy.com/v1/gifs/search?q=dinosaurs&api_key=DOH2HGMQmyC6JLKIncaurmCzSJr2Mz49");
-    // xhr.done(function(data) 
-    // { console.log("success got data", data); });
-
-
-
-
-
-
-
-
- // let promise = new Promise(function(resolve, reject) {
-
-
-
- // let url = `http://dinoipsum.herokuapp.com/api?q=dinosaurs&appid=PMAK-5ea07404fdab6400299900a9-ed692087a779186afc7b70e2af775b4432`;
